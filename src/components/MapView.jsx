@@ -1,9 +1,10 @@
 import React, { useEffect, useRef } from 'react'
 import esriConfig from '@arcgis/core/config.js'
 import Map from '@arcgis/core/Map.js'
-import EsriMapView from '@arcgis/core/views/MapView.js' // WICHTIG: umbenannt!
+import EsriMapView from '@arcgis/core/views/MapView.js'
 import FeatureLayer from '@arcgis/core/layers/FeatureLayer.js'
 import * as webMercatorUtils from '@arcgis/core/geometry/support/webMercatorUtils.js'
+import { reverseGeocode } from '../lib/http'
 
 export default function MapView({ onMapClick }) {
   const mapDiv = useRef(null)
@@ -38,10 +39,12 @@ export default function MapView({ onMapClick }) {
 
     map.add(worldCities)
 
-    const clickHandler = view.on('click', (evt) => {
+    const clickHandler = view.on('click', async (evt) => {
       try {
         const geo = webMercatorUtils.webMercatorToGeographic(evt.mapPoint)
-        onMapClick?.({ lat: geo.y, lon: geo.x })
+        let place = ''
+        try { place = await reverseGeocode(geo.y, geo.x) } catch {}
+        onMapClick?.({ lat: geo.y, lon: geo.x, place })
       } catch (e) {
         console.error('Click handler error', e)
       }

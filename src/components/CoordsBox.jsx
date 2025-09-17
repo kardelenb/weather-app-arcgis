@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function CoordsBox({ lat, lon }) {
   const fmt = (v) => (v == null ? '' : v.toFixed(6))
-  const hasCoords = lat != null && lon != null   // <-- wichtig: null-Check, nicht truthy!
+  const hasCoords = lat != null && lon != null  
 
   return (
     <div className="coordsBox">

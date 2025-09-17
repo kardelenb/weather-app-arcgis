@@ -14,3 +14,61 @@ body { background: var(--bg); color: var(--text); font: 14px/1.5 ui-sans-serif, 
 .coordsBox { position: absolute; top: 16px; right: 16px; min-width: 220px; background: rgba(21,25,36,.9); border: 1px solid rgba(124,196,255,.25); backdrop-filter: blur(4px); border-radius: 12px; padding: 10px 12px; box-shadow: var(--shadow); }
 .coordsBox .label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .6px; }
 .coordsBox .value { font-variant-numeric: tabular-nums; font-size: 13px; margin-top: 2px; }
+
+
+.weatherPanel {
+  position: absolute;
+  top: 88px;            
+  right: 16px;
+  width: 280px;
+  max-height: 60vh;
+  overflow: auto;
+  background: rgba(21,25,36,.9);
+  border: 1px solid rgba(124,196,255,.25);
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(4px);
+}
+
+.weatherPanel h3 {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.weatherRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(124,196,255,.15);
+}
+.weatherRow:last-child {
+  border-bottom: none;
+}
+
+.badge {
+  display: inline-block;
+  min-width: 48px;
+  text-align: center;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(124,196,255,.18);
+  border: 1px solid rgba(124,196,255,.35);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 780px) {
+  .weatherPanel {
+    width: calc(100% - 32px);
+    left: 16px;
+    right: 16px;
+    top: auto;
+    bottom: 16px; 
+    max-height: 40vh;
+  }
+}
