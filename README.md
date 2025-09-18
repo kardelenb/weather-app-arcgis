@@ -1,12 +1,41 @@
-# React + Vite
+# Wetter-App (ArcGIS + OpenCage + OpenWeather)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Einfache Web-GIS-Anwendung mit dem **ArcGIS Maps SDK for JavaScript**, umgesetzt in **React (Vite)**.  
 
-Currently, two official plugins are available:
+## Systemvoraussetzungen
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Node.js 22.x** (getestet mit `v22.19.0`)  
+- **npm 10+**  
+- **Chrome (aktuell)**  
+- Internetzugang (für ArcGIS / OpenCage / OpenWeather APIs)  
 
-## Expanding the ESLint configuration
+## Projekt aufsetzen
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+# 1) Repository klonen
+git clone git@github.com:kardelenb/weather-app-arcgis.git
+cd weather-app-arcgis
+
+# 2) .env.local mit API-Keys anlegen
+cat > .env.local << 'EOF'
+VITE_ARCGIS_API_KEY=HIER_ARCGIS_KEY_EINSETZEN
+VITE_OPENCAGE_API_KEY=HIER_OPENCAGE_KEY_EINSETZEN
+VITE_OPENWEATHER_API_KEY=HIER_OPENWEATHER_KEY_EINSETZEN
+EOF
+
+# 3) Abhängigkeiten installieren
+npm install
+
+## Entwicklung starten (Hot-Reload)
+```bash
+npm run dev
+# Browser öffnet: http://localhost:5173
+
+##Produktion (Teil 3 Build)
+# Build erzeugen
+npm run build
+# Ausgabe liegt in ./dist
+
+# Production-Preview lokal starten
+npm run preview
+# Browser: http://localhost:4173
