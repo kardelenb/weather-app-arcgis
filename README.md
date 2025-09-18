@@ -39,3 +39,18 @@ npm run build
 # Production-Preview lokal starten
 npm run preview
 # Browser: http://localhost:4173
+
+
+## Tests (Teil 4)
+
+Dieses Projekt nutzt **Vitest** und **Testing Library** für Unittests.  
+
+```bash
+# Interaktiv
+npm run test
+
+# Im CI/Build (mit Coverage)
+npm run test:run
+
+#für testabdeckung:
+#npm i -D @vitest/coverage-v8
