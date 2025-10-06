@@ -12,7 +12,7 @@ export default function WeatherPanel({ lat, lon, place }) {
     setLoading(true)
     fetchForecastByCoords(lat, lon)
       .then((f) => { if (!cancelled) { setData(f); setError('') } })
-      .catch((e) => { if (!cancelled) setError(e?.message || 'Fehler beim Laden') })
+      .catch((e) => { if (!cancelled) setError('Fehler beim Laden') })
       .finally(() => { if (!cancelled) setLoading(false) })
     return () => { cancelled = true }
   }, [lat, lon])

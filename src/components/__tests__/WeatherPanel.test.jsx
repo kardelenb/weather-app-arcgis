@@ -39,8 +39,6 @@ describe('WeatherPanel', () => {
   test('zeigt Fehlertext bei Fehler', async () => {
     fetchForecastByCoords.mockRejectedValueOnce(new Error('Boom'))
     render(<WeatherPanel lat={52.5} lon={13.4} place="" />)
-    await waitFor(() => {
-      expect(screen.getByText(/boom/i)).toBeInTheDocument()
-    })
+      expect(await screen.findByText(/fehler beim laden/i)).toBeInTheDocument()
   })
 })
